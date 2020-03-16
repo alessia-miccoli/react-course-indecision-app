@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import AddOption from './components/AddOption';
+import Action from './components/Action';
+import Options from './components/Options';
+import Header from './components/Header';
+
 class IndecisionApp extends React.Component {
   constructor(props) {
     super(props);
@@ -83,85 +88,6 @@ class IndecisionApp extends React.Component {
       </div>
     )
   };
-}
-
-function Header(props){
-  return (
-    <div>
-      <h1>{props.title}</h1>
-      <h2>{props.subtitle}</h2>
-    </div>
-  );
-}
-
-function Action(props){
-  return (
-    <div>
-      <button
-        disabled={!props.hasOptions}
-        onClick={props.handlePick}>What should I do?</button>
-    </div>
-  );
-}
-
-function Options(props) {
-  return (
-    <div>
-      <button onClick={props.handleDeleteOptions}>Remove All</button>
-      {props.options.length === 0 && <p>Please add an option to get started!</p>}
-      {props.options.map((option) => (
-        <Option
-          key={option}
-          optionText={option}
-          handleDeleteOption={props.handleDeleteOption}
-        />))}
-    </div>
-  );
-}
-
-function Option(props){
-  return (
-    <div>
-      <p>{props.optionText}</p>
-      <button onClick={() => props.handleDeleteOption(props.optionText)}>Remove</button>
-    </div>
-  );
-}
-
-class AddOption extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      error: null
-    }
-    this.handleAddOption = this.handleAddOption.bind(this);
-  }
-
-  handleAddOption(e) {
-    e.preventDefault();
-
-    const option = e.target.elements.option.value.trim();
-    const error = this.props.handleAddOption(option);
-
-    this.setState(() => ({ error }))
-
-    if(!error){
-      e.target.elements.option.value = '';
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.handleAddOption}>
-          <input type="text" name="option" />
-          <button >Add Option</button>
-        </form>
-      </div>
-    );
-  }
 }
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
