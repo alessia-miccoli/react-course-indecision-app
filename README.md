@@ -1,21 +1,11 @@
 # react-course-indecision-app
 
-## live-server:
+## serve:
 
-*installation:* `npm i live-server`
-
-*check if correctly installed:* `live server -v`
+`npm run dev-server`
 
 *serve project:* `live-server public` or `npm run serve`
 
-## babel:
+## build:
 
-*installation of babel:* 
-
-`npm i babel-cli`
-
-*installation of presets* (allow babel to compile jsx (preset-react) and ES6, ES7,... (preset-env) syntax: 
-
-`npm install babel-presets-react babel-presets-env`
-
-*to compile (--watch is to watch for changes):* <pre/>babel <b>source file name</b> --out-file=<b>output file name</b> --presets=env,react --watch</pre> or `npm run build-babel`
+`npm run build`
