@@ -20,3 +20,13 @@
   padding: $s-size;
   outline: none;
 }
+
+@media (max-width: $desktop-breakpoint) {
+  .add-option{
+    flex-direction: column;
+  }
+
+  .add-option__input{
+    margin: 0 0 $s-size 0;
+  }
+}
