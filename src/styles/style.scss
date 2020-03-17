@@ -1,5 +1,9 @@
-$brand-color: blue;
+@import './base/settings';
+@import './base/base';
+@import './components/button';
+@import './components/container';
+@import './components/header';
+@import './components/option';
+@import './components/add-options';
+@import './components/widget';
 
-* {
-  color: $brand-color;
-}

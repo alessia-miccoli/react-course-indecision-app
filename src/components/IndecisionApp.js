@@ -27,7 +27,7 @@ export default class IndecisionApp extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState){
+  componentDidUpdate(prevProps, prevState) {
     if (prevState.options.length !== this.state.options.length) {
       const json = JSON.stringify(this.state.options);
       localStorage.setItem('options', json);
@@ -37,7 +37,7 @@ export default class IndecisionApp extends React.Component {
   handlePick = () => {
     const randomNum = Math.floor(Math.random() * this.state.options.length);
     const option = this.state.options[randomNum];
-    
+
     this.setState(() => ({
       selected: option
     }));
@@ -61,11 +61,11 @@ export default class IndecisionApp extends React.Component {
     }));
   }
 
-  handleDeleteOptions = () =>{
+  handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
   }
 
-  closeModal = () =>{
+  closeModal = () => {
     this.setState(() => ({ selected: undefined }));
   }
 
@@ -76,18 +76,22 @@ export default class IndecisionApp extends React.Component {
     return (
       <div>
         <Header title={title} subtitle={subtitle} />
-        <Action
-          hasOptions={this.state.options.length > 0}
-          handlePick={this.handlePick} />
-        <Options
-          options={this.state.options}
-          handleDeleteOptions={this.handleDeleteOptions}
-          handleDeleteOption={this.handleDeleteOption}
-        />
-        <AddOption handleAddOption={this.handleAddOption} />
-        <OptionModal 
+        <div className="container">
+          <Action
+            hasOptions={this.state.options.length > 0}
+            handlePick={this.handlePick} />
+          <div className="widget">
+            <Options
+              options={this.state.options}
+              handleDeleteOptions={this.handleDeleteOptions}
+              handleDeleteOption={this.handleDeleteOption}
+            />
+            <AddOption handleAddOption={this.handleAddOption} />
+          </div>
+        </div>
+        <OptionModal
           selected={this.state.selected}
-          closeModal={this.closeModal}/>
+          closeModal={this.closeModal} />
       </div>
     )
   };
